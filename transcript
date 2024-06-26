@@ -1,0 +1,198 @@
+vsim -gui work.tb
+# vsim -gui work.tb 
+# Start time: 17:39:20 on Jun 25,2024
+# Loading work.tb
+# Loading work.cpu
+# Loading work.registerfile
+# Loading work.ALU
+# Loading work.mem
+# Loading work.mux
+# WARNING: No extended dataflow license exists
+run -all
+# initialize A1:
+# A_1 =                                                                                                                                                         2133,
+# A_2 =                                                                                                                                                            x,
+# {A_4,A_3} =                                                                                                                                                                                                                                                                                                                      x
+# initialize A2:
+# A_1 =                                                                                                                                                         2133,
+# A_2 =                                                                                                                                                        65323,
+# {A_4,A_3} =                                                                                                                                                                                                                                                                                                                      x
+# store A1 in mem[45]:
+# A_1 =                                                                                                                                                         2133,
+# A_2 =                                                                                                                                                         65323,
+# {A_4,A_3} =                                                                                                                                                                                                                                                                                                                      x,
+# invalidmemaddress = 0
+# 
+# store A2 in mem[100]:
+# A_1 =                                                                                                                                                         2133,
+# A_2 =                                                                                                                                                         65323,
+# {A_4,A_3} =                                                                                                                                                                                                                                                                                                                      x,
+# invalidmemaddress = 0
+# 
+# load mem[45] in A2:
+# A_1 =                                                                                                                                                         2133,
+# A_2 =                                                                                                                                                          2133,
+# {A_4,A_3} =                                                                                                                                                                                                                                                                                                                      x,
+# invalidmemaddress = 0
+# 
+# load mem[100] in A1:
+# A_1 =                                                                                                                                                        65323,
+# A_2 =                                                                                                                                                          2133,
+# {A_4,A_3} =                                                                                                                                                                                                                                                                                                                      x,
+# invalidmemaddress = 0
+# 
+# store A1 in mem[500]:
+# A_1 =                                                                                                                                                        65323,
+# A_2 =                                                                                                                                                          2133,
+# {A_4,A_3} =                                                                                                                                                                                                                                                                                                                      x,
+# invalidmemaddress = 1
+# 
+# load mem[501] in A1:
+# A_1 =                                                                                                                                                        65323,
+# A_2 =                                                                                                                                                          2133,
+# {A_4,A_3} =                                                                                                                                                                                                                                                                                                                      x,
+# invalidmemaddress = 1
+# 
+# addition:
+# A_1 =                                                                                                                                                        65323,
+# A_2 =                                                                                                                                                         2133,
+# {A_4,A_3} =                                                                                                                                                                                                                                                                                                                  67456
+# multiplication:
+# A_1 =                                                                                                                                                        65323,
+# A_2 =                                                                                                                                                         2133,
+# {A_4,A_3} =                                                                                                                                                                                                                                                                                                              139333959
+# store A3 in mem[299]:
+# A_3 =                                                                                                                                                    139333959,
+# A_4 =                                                                                                                                                             0,
+# {A_4,A_3} =                                                                                                                                                                                                                                                                                                              139333959,
+# invalidmemaddress = 0
+# 
+# store A4 in mem[400]:
+# A_3 =                                                                                                                                                    139333959,
+# A_4 =                                                                                                                                                             0,
+# {A_4,A_3} =                                                                                                                                                                                                                                                                                                              139333959,
+# invalidmemaddress = 0
+# 
+# load mem[299] in A1:
+# A_1 =                                                                                                                                                    139333959,
+# A_2 =                                                                                                                                                          2133,
+# {A_4,A_3} =                                                                                                                                                                                                                                                                                                              139333959,
+# invalidmemaddress = 0
+# 
+# initialize A2:
+# A_1 =                                                                                                                                                    139333959,
+# A_2 =                                                                                                                                                       -54229,
+# {A_4,A_3} =                                                                                                                                                                                                                                                                                                              139333959
+# multiplication:
+# A_1 =                                                                                                                                                    139333959,
+# A_2 =                                                                                                                                                       -54229,
+# {A_4,A_3} =                                                                                                                                                                                                                                                                                                         -7555941262611
+# addition:
+# A_1 =                                                                                                                                                    139333959,
+# A_2 =                                                                                                                                                       -54229,
+# {A_4,A_3} =                                                                                                                                                                                                                                                                                                              139279730
+# ** Note: $stop    : C:/Users/Asus/Desktop/DSD/jobrani_final_dsd7/modules.v(150)
+#    Time: 3200 ps  Iteration: 0  Instance: /tb
+# Break in Module tb at C:/Users/Asus/Desktop/DSD/jobrani_final_dsd7/modules.v line 150
+quit -sim
+# End time: 18:09:19 on Jun 25,2024, Elapsed time: 0:29:59
+# Errors: 0, Warnings: 1
+# Compile of modules.v was successful.
+vsim -gui work.tb
+# vsim -gui work.tb 
+# Start time: 21:26:09 on Jun 25,2024
+# Loading work.tb
+# Loading work.cpu
+# Loading work.registerfile
+# Loading work.ALU
+# Loading work.mem
+# Loading work.mux
+run -all
+# initialize A1:
+# A_1 =                                                                                                                                                         2133,
+# A_2 =                                                                                                                                                            x,
+# {A_4,A_3} =                                                                                                                                                                                                                                                                                                                      x
+# initialize A2:
+# A_1 =                                                                                                                                                         2133,
+# A_2 =                                                                                                                                                        65323,
+# {A_4,A_3} =                                                                                                                                                                                                                                                                                                                      x
+# store A1 in mem[45]:
+# A_1 =                                                                                                                                                         2133,
+# A_2 =                                                                                                                                                         65323,
+# {A_4,A_3} =                                                                                                                                                                                                                                                                                                                      x,
+# invalidmemaddress = 0
+# 
+# store A2 in mem[100]:
+# A_1 =                                                                                                                                                         2133,
+# A_2 =                                                                                                                                                         65323,
+# {A_4,A_3} =                                                                                                                                                                                                                                                                                                                      x,
+# invalidmemaddress = 0
+# 
+# load mem[45] in A2:
+# A_1 =                                                                                                                                                         2133,
+# A_2 =                                                                                                                                                          2133,
+# {A_4,A_3} =                                                                                                                                                                                                                                                                                                                      x,
+# invalidmemaddress = 0
+# 
+# load mem[100] in A1:
+# A_1 =                                                                                                                                                        65323,
+# A_2 =                                                                                                                                                          2133,
+# {A_4,A_3} =                                                                                                                                                                                                                                                                                                                      x,
+# invalidmemaddress = 0
+# 
+# store A1 in mem[500]:
+# A_1 =                                                                                                                                                        65323,
+# A_2 =                                                                                                                                                          2133,
+# {A_4,A_3} =                                                                                                                                                                                                                                                                                                                      x,
+# invalidmemaddress = 1
+# 
+# load mem[501] in A1:
+# A_1 =                                                                                                                                                        65323,
+# A_2 =                                                                                                                                                          2133,
+# {A_4,A_3} =                                                                                                                                                                                                                                                                                                                      x,
+# invalidmemaddress = 1
+# 
+# addition:
+# A_1 =                                                                                                                                                        65323,
+# A_2 =                                                                                                                                                         2133,
+# {A_4,A_3} =                                                                                                                                                                                                                                                                                                                  67456
+# multiplication:
+# A_1 =                                                                                                                                                        65323,
+# A_2 =                                                                                                                                                         2133,
+# {A_4,A_3} =                                                                                                                                                                                                                                                                                                              139333959
+# store A3 in mem[299]:
+# A_3 =                                                                                                                                                    139333959,
+# A_4 =                                                                                                                                                             0,
+# {A_4,A_3} =                                                                                                                                                                                                                                                                                                              139333959,
+# invalidmemaddress = 0
+# 
+# store A4 in mem[400]:
+# A_3 =                                                                                                                                                    139333959,
+# A_4 =                                                                                                                                                             0,
+# {A_4,A_3} =                                                                                                                                                                                                                                                                                                              139333959,
+# invalidmemaddress = 0
+# 
+# load mem[299] in A1:
+# A_1 =                                                                                                                                                    139333959,
+# A_2 =                                                                                                                                                          2133,
+# {A_4,A_3} =                                                                                                                                                                                                                                                                                                              139333959,
+# invalidmemaddress = 0
+# 
+# initialize A2:
+# A_1 =                                                                                                                                                    139333959,
+# A_2 =                                                                                                                                                       -54229,
+# {A_4,A_3} =                                                                                                                                                                                                                                                                                                              139333959
+# multiplication:
+# A_1 =                                                                                                                                                    139333959,
+# A_2 =                                                                                                                                                       -54229,
+# {A_4,A_3} =                                                                                                                                                                                                                                                                                                         -7555941262611
+# addition:
+# A_1 =                                                                                                                                                    139333959,
+# A_2 =                                                                                                                                                       -54229,
+# {A_4,A_3} =                                                                                                                                                                                                                                                                                                              139279730
+# ** Note: $stop    : C:/Users/Asus/Desktop/DSD/jobrani_final_dsd7/modules.v(150)
+#    Time: 3200 ps  Iteration: 0  Instance: /tb
+# Break in Module tb at C:/Users/Asus/Desktop/DSD/jobrani_final_dsd7/modules.v line 150
+quit -sim
+# End time: 21:30:55 on Jun 25,2024, Elapsed time: 0:04:46
+# Errors: 0, Warnings: 2
