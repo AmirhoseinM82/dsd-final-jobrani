@@ -1,48 +1,49 @@
-# dsd-final-jobrani
+# Vector Processor
+Our project is a 512-bit vector processor for integers with three sections: a register file with four 512-bit arrays, a math unit with addition and multiplication capabilities and a memory.
+# Tools
+In this project, only Verilog language is used and you can run it on Modelsim tool.
+# Implementation Details
+The code of this project includes 5 modules for hardware implementation and a test bench module for testing the project.
 
+Register file module: In addition to the inputs and outputs of the registers, this module also receives the clock input and number of the registers and the load control bit.
+```
+registerfile (input clk, input [2:0] regnum, input load, input [511:0] in_A1, in_A2, in_A3, in_A4, output reg [511:0] out_A1, out_A2, out_A3, out_A4);
+```
+ALU: This module is our math unit with add and mul control inputs to perform addition or multiplication on two register inputs and store the result on another two registers.
+```
+ALU (input add, mul, input [511:0] A1, A2, output reg [511:0] A3, A4);
+```
+Memory: In this section, in addition to load, store, clock, registernumber and address inputs, and the inputs and outputs connected to the registers, there is invalidregnum output to measure the correctness of the address.
+```
+mem (input clk, load, store, input [8:0] address, input [2:0] regnum, input [511:0] out_A1, out_A2, out_A3, out_A4, output reg [511:0] in_A1, in_A2, in_A3, in_A4, output reg invalidmemaddress);
+```
+Multiplexer: The reason for using multiplexer is given in the project description file.
+```
+mux (input [511:0] a, b, input control, output reg [511:0] out);
+```
+cpu: This module contains the hardwares created by the previous modules and we will finally take samples from this module for testing.<br />
 
-جبرانی پایانترم – امیرحسین میرداریان
-401106606
+tb: This module is test bench and we use it for testing modules.
 
-سوال 7 )
+For more information about the modules, you can refer to the project description file.
 
-![Screenshot (298)](https://github.com/AmirhoseinM82/dsd-final-jobrani/assets/119614563/af214bac-bc89-4422-ade7-33d90d180358)
+# How to Run
+First step is cloning this repository
+```
+git clone https://github.com/yourusername/dsd-final-jobrani.git / cd stack-based-alu
+```
+next open files with modelsim, compile and simulate project.<br />
+Note that the main module is the test bench module.
 
- 
-طبق خواست سوال یک ماژول registerfile تعریف می‌کنیم که قابلیت ذخیره سازی 4 آرایه 512 بیتی را داشته باشد. همانطور که در تصویر ماژول مشاهده می‌کنید برای ورودی ماژول علاوه بر کلاک یک ورودی regnum را تعریف میکنیم که شماره های 000 و 001 و 010 و 011 آن به ترتیب شماره های رجیستر یک تا چهار هستند که رجیستری که با آن کار داریم را مشخص می‌کند. همچنین اگر بیت پرارزش regnum برابر 1 باشد این شماره کار با رجیستر 3 و 4 را به طور همزمان انجام می‌دهد. ورودی دیگر این ماژول ورودی load است که در صورتی که یک باشد اجازه می‌دهد مقادیر رجیسترها تغییر کنند. ورودی ها و خروجی های 512 بیتی هم متعلق به رجیسترها می‌باشند.
-یک ماژول دیگر که در تصویر بالا مشاهده می‌کنید ماژول ALU است که عملیات‌های ضرب و جمع را به صورت علامت دار انجام می‌دهد و 512 بیت کم ارزش را در رجیستر 3 و 512 بیت پرارزش را در رجیستر 4 می‌ریزد. در صورتی که add = 1 , mul = 0 باشد جمع و اگر add = 0 , mul = 1 باشد ضرب را انجام می‌دهد.
+# Results
 
-![Screenshot (299)](https://github.com/AmirhoseinM82/dsd-final-jobrani/assets/119614563/5ca74a93-4cf5-4466-8a3d-f9015d103adc)
-![Screenshot (300)](https://github.com/AmirhoseinM82/dsd-final-jobrani/assets/119614563/fff9a921-a477-4221-ad1f-c6fde150bb76)
-
- 
- 
-دو تصویر بالا که مشاهده می‌کنید مربوط به ماژول حافظه هستند. همانطور که می‌بینید در این ماژول حافظه‌ای به عمق 512 و عرض 32 بیت وجود دارد. ورودی های ماژول علاوه بر کلاک دو ورودی load و store هستند که فقط یکی از آنها میتواند یک باشد و مشخص میکند که داده در حافظه ذخیره می‌شود یا روی رجیستر نوشته می‌شود. یک ورودی دیگر address است که 9 بیت است زیرا حافظه ما 512 خانه دارد. یک ورودی دیگر regnum است که طبق قاعده‌ای که پیش تر ذکر شد شماره ی رجیسترها را برای ارتباط با حافظه مشخص می‌کند. ورودی و خروجی های 512 بیتی هم مربوط به ارتباط رجیسترها با حافظه هستند. یک خروجی دیگر invalidmemaddress است. طبق فرض سوال این پردازنده قابلیت بارگزاری / ذخیره سازی 16 خانه حافظه پشت سر هم یعنی 512 بیت را دارد. بنابراین آدرس هایی که می‌توان به پردازنده داد تا از آن آدرس 16 خانه حافظه را دسترسی داشته باشد خانه های 0 تا 496 حافظه هستند و آدرس‌های بیشتر از 496 کمتر از 16 خانه حافظه را شامل می‌شوند بنابراین اگر در دستور load و یا store آدرس‌های بیش از این عدد داده شود عملیاتی انجام نمیشود و خروجی invalidmemaddress برابر 1 می‌شود.
-
-![Screenshot (301)](https://github.com/AmirhoseinM82/dsd-final-jobrani/assets/119614563/9e426d78-fa7e-4877-943a-427fed2b4c21)
-
-
- 
-ما برای ورودی 4 رجیسترمان به 4 مالتیپلکسر نیاز داریم چرا که یک ورودی رجیستر 1 و2  به بیرون متصل است تا دیتا به طور مستقیم توسط کاربر وارد پردازنده شود ( در فرض سوال نبود اما منطقا باید داده اولیه از بیرون وارد پردازنده شود زیرا خود پردازنده در ابتدا حافظه اش خالی است.) و دیگری به حافظه متصل است و برای رجیسترهای 3 و 4 یک ورودی از حافظه و دیگری از ALU می‌آید بنابراین به 4 مالتیپلکسر نیاز داریم.
-سپس همانطور که در ماژول cpu مشاهده می‌کنید این ماژول اینستنس های ماژول هایی که تا اینجا تعریف کردیم را در خود جای میدهد و عملا بخش های مختلف پردازنده را به هم متصل میکند که شامل یک رجیستر فایل و یک alu و یک مموری و چهار مالتیپلکسر است. ورودی های سه ماژول اول مشخص بودند و توضیح داده شد. ورودی های مالتیپلکسر هم مشخص هستند. حال ورودی control مالتیپلکسرها را بررسی می‌کنیم. برای ماژول cpu یک ورودی initialize داریم که زمانی که 1 است ورودی رجیسترهای 1 و 2 را از بیرون میگیریم در غیر اینصورت ورودی رجیسترهای 1 و2 به خروجی مموری متصل میشود. در مورد مالتیپلکسرهای 3 و 4 نیز ورودی کنترل زمانی 1 است که عملیات ضرب یا جمع نداشته باشیم تا ورودی رجیستر به خروجی حافظه متصل شود نه alu.
-
-
-![Screenshot (302)](https://github.com/AmirhoseinM82/dsd-final-jobrani/assets/119614563/da366062-654c-4a2e-8133-7e8bb721f0ee)
-
-![Screenshot (303)](https://github.com/AmirhoseinM82/dsd-final-jobrani/assets/119614563/86d1f86c-a24e-4820-ae28-cac352c8fa21)
- 
- 
-درنهایت در ماژول تست بنچ از cpu یک اینستنس می‌گیریم و تست‌های لازم را روی آن انجام می‌دهیم.
-در تمام دستوراتی که وارد میکنیم باید مقادیر regnum, loadreg, initialize, load, store, add, mul را مشخص کنیم در دستوراتی که initialize = 1 است باید dip_A1 یا dip_A2 را برای مقداردهی اولیه مشخص کنیم. در دستوراتی که یکی از load , store را 1 می‌کنیم آدرس را هم مشخص می‌کنیم.
-حال دستوراتی که برای تست درنظر گرفتیم را بررسی و در ادامه خروجی آنها را نشان خواهیم داد.
-ابتدا رجیسترهای 1 و 2 را با دیپ سوییچ ها به ترتیب مقداردهی می‌کنیم. سپس محتوای رجیستر 1 را در آدرس 45 و رجیستر 2 را در آدرس 100 حافظه ذخیره میکنیم یعنی 512 بیت رجیستر 1 و 2 به ترتیب در 16 خانه حافظه با شروع از آدرس های 45 و 100 قرار می‌گیرند. سپس برای اطمینان از عملکرد درست حافظه اینبار محتوای 16 خانه حافظه با شروع از آدرس 100 را در رجیستر 1 و 16 خانه حافظه با شروع از آدرس 45 را در رجیستر 2 می‌گذاریم سپس دستورات load و store را برای آدرس‌های غیرمجاز انجام میدهیم و همانطور که در تصاویر بعدی مشاهده میکنید خروجی مناسب را نمایش میدهد و تغییری در حافظه و رجیسترها ایجاد نمیکند. و به این ترتیب عملکرد درست دو دستور بارگزاری و ذخیره را به طور کامل بررسی کردیم. (توجه: میتوانستیم load را در هر آدرس مجازی انجام دهیم اما چون ذخیره سازی را در دو آدرس 45 و 100 انجام داده بودیم و تنها این دو خانه حافظه دارای محتوای معنی دار بودند از همین دو آدرس استفاده کردیم و عملا محتوای دو رجیستر 1 و2 را جابه جا کردیم.)
-سپس دستور addition را اجرا میکنیم و همانطور که میبینید نتیجه به درستی در رجیسترهای 3 و4 ذخیره شد. سپس عمل ضرب را انجام میدهیم که میبینیم آن هم به درستی اجرا شد. حال محتوای دو رجیستر 3 و 4 را در دو آدرس حافظه ذخیره میکنیم. سپس محتوای آدرسی که محتوای رجیستر 3 در ان ذخیره شده بود را در رجیستر 1 بارگزاری میکنیم. برای اطمینان از درستی عملکرد مدار برای اعداد منفی یک عدد منفی را وارد رجیستر دو میکنیم و عملیات ضرب و جمع را انجام میدهیم که به درستی اجرا میشوند.
-به این ترتیب عملکرد مدار را در حالت های مختلف بررسی کردیم و با توجه به توضیحات داده شده و خروجی مدار واضح است مدار خواسته های مسئله را به طور کامل اجرا میکند.
- 
  ![Screenshot (304)](https://github.com/AmirhoseinM82/dsd-final-jobrani/assets/119614563/dc184dc5-810c-48c0-916e-08839fecded0)
  ![Screenshot (305)](https://github.com/AmirhoseinM82/dsd-final-jobrani/assets/119614563/c4a02578-5518-43db-876a-c7127161c7db)
  ![Screenshot (308)](https://github.com/AmirhoseinM82/dsd-final-jobrani/assets/119614563/9a305827-056b-4a82-bcbf-3db2611222cd)
  ![Screenshot (307)](https://github.com/AmirhoseinM82/dsd-final-jobrani/assets/119614563/f65e2f41-e42e-487e-9b41-e50f202bcfee)
+
+# Author
+Amirhosein Mirdariyan 401106606
 
 
 
