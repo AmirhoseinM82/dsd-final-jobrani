@@ -30,7 +30,7 @@ For more information about the modules, you can refer to the project description
 # How to Run
 First step is cloning this repository
 ```
-git clone https://github.com/yourusername/dsd-final-jobrani.git / cd stack-based-alu
+git clone https://github.com/AmirhoseinM82/dsd-final-jobrani.git / cd stack-based-alu
 ```
 next open files with modelsim, compile and simulate project.<br />
 Note that the main module is the test bench module.
